@@ -71,3 +71,25 @@ table {
     --dark-theme-blue: #2E8BC0;
     --dark-theme-light-blue: #B1D4E0;
 }
+
+nav{
+    width: 100%;
+    height: 10vh;
+    min-height: 5em;
+}
+
+nav ul{
+    display: flex;
+    align-items: center;
+    width: calc(100% - 8px);
+    height: 100%;
+    flex-direction: row-reverse;
+}
+
+.light-theme-nav{
+    background-color: var(--light-theme-green);
+}
+
+.dark-theme-nav{
+    background-color: var(--dark-theme-midnight-blue);
+}
