@@ -48,3 +48,26 @@ table {
 }
 
 /* CSS RESET */
+
+.sans{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.nunito{
+    font-family: 'Nunito', sans-serif;
+}
+
+/* FONTS */
+
+/* VARIABLES */
+:root{
+    --light-theme-green: #1DC690;
+    --light-theme-blue: #278AB0;
+    --light-theme-dark-blue: #1C4670;
+    --light-theme-white: #EAEAE0;
+
+    --dark-theme-midnight-blue: #145DA0;    
+    --dark-theme-dark-blue: #0C2D48;
+    --dark-theme-blue: #2E8BC0;
+    --dark-theme-light-blue: #B1D4E0;
+}
