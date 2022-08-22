@@ -75,7 +75,11 @@ table {
 nav{
     width: 100%;
     height: 10vh;
-    min-height: 5em;
+    min-height: 4em;
+    position: fixed;
+    top: 0px;
+
+    
 }
 
 nav ul{
@@ -88,8 +92,18 @@ nav ul{
 
 .light-theme-nav{
     background-color: var(--light-theme-green);
+    border-bottom: solid 3 px var(--dark-theme-light-blueS);
 }
 
 .dark-theme-nav{
     background-color: var(--dark-theme-midnight-blue);
+    border-bottom: solid 3px var(--dark-theme-light-blue);
+}
+
+.dark-theme{
+    background-color: var(--dark-theme-dark-blue);
+}
+
+.lig-theme{
+    background-color: var(--light-theme-dark-blue);
 }
