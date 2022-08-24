@@ -20,11 +20,17 @@ function navigation(buttonTheme, theme) {
             viewProfile.textContent = 'View profile';
             
             const viewCompleted = document.createElement('li');
-            viewCompleted.textContent = 'View completed sidequests';
+            viewCompleted.textContent = 'View completed';
+
+            const settings = document.createElement('li');
+            settings.textContent = 'Settings';
+            
             viewProfile.classList.add('sans');
             viewCompleted.classList.add('sans');
+            settings.classList.add('sans');
             ul.appendChild(viewProfile);
             ul.appendChild(viewCompleted);
+            ul.appendChild(settings);
         }
         navBar.classList.toggle('expanded');
         ul.classList.toggle('expanded');
@@ -40,6 +46,5 @@ function navigation(buttonTheme, theme) {
     ul.classList.add('flex');
     document.body.appendChild(navBar);
 }
-
 
 export default navigation
