@@ -9,18 +9,25 @@ function navigation(buttonTheme, theme) {
 
 
     function toggleExpand(){
+        if(navBar.classList.contains('expanded')){
+            while(ul.childElementCount !== 1){
+                ul.removeChild(ul.childNodes[ul.childElementCount - 1]);
+            }
+        }
+
         if(!navBar.classList.contains('expanded')){
             const viewProfile = document.createElement('li');
             viewProfile.textContent = 'View profile';
             
             const viewCompleted = document.createElement('li');
             viewCompleted.textContent = 'View completed sidequests';
-
+            viewProfile.classList.add('sans');
+            viewCompleted.classList.add('sans');
             ul.appendChild(viewProfile);
             ul.appendChild(viewCompleted);
         }
-
         navBar.classList.toggle('expanded');
+        ul.classList.toggle('expanded');
     }
 
     menuButton.src = menuImage;
