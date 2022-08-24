@@ -1,6 +1,5 @@
 import { theme } from "./applySystemTheme";
 import contents from "..";
-import addIcon from '../icons/circle-white.png'
 
 const lightThemeToDo = () =>{
     const card = cardFactory();
@@ -23,6 +22,7 @@ const cardFactory = () => {
 
     card.appendChild(heading);
     card.appendChild(dropDown);
+    card.classList.add('todo');
     
     return card;
 }
@@ -34,11 +34,15 @@ function createButton(){
     const container = document.createElement('div');
     container.classList.add('container');
     container.appendChild(createButton);
+
+    //fixes the theme of the button 
+
     if(theme === 'dark'){    
         createButton.addEventListener('click', darkThemeToDo)
         container.classList.add('lighter');
         return container;
     }
+
     container.classList.add('darker');
     createButton.addEventListener('click', lightThemeToDo)
     
