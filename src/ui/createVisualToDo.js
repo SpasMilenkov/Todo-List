@@ -1,5 +1,7 @@
 import { theme } from "./applySystemTheme";
 import contents from "..";
+import work from '../images/work.jpg';
+import dropdown from '../icons/light-drop-down-arrow.png'
 
 const lightThemeToDo = () =>{
     const card = cardFactory();
@@ -15,10 +17,14 @@ const darkThemeToDo = () =>{
 
 const cardFactory = () => {
     const card = document.createElement('div');
-    const column = document.createElement('div');
-    const heading = document.createElement('h1');
     const dropDown = new Image(16, 16);
-    const backdrop = new Image();
+    dropDown.src = dropdown;
+    const heading = document.createElement('h1');
+    heading.classList.add('main-heading');
+    heading.textContent = 'Test heading';
+    card.style.background = `linear-gradient(90deg, rgba(231,231,231,0.227328431372549) 0%, rgba(46,139,192,0.87718837535014) 63%), url('${work}')`;
+    card.style.backgroundSize = 'cover'
+    card.style.backgroundPosition = 'center';
 
     card.appendChild(heading);
     card.appendChild(dropDown);
