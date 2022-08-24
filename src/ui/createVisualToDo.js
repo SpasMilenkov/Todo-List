@@ -28,15 +28,21 @@ const cardFactory = () => {
 }
 
 function createButton(){
-    const createButton = new Image(64, 64);
+    const createButton = document.createElement('h1');
+    createButton.textContent = 'Enter sidequest';
+    createButton.classList.add('main-heading', 'sans');
+    const container = document.createElement('div');
+    container.classList.add('container');
+    container.appendChild(createButton);
     if(theme === 'dark'){    
-        createButton.src = addIcon;
-        createButton.addEventListener('click', lightThemeToDo)
-        return createButton;
+        createButton.addEventListener('click', darkThemeToDo)
+        container.classList.add('lighter');
+        return container;
     }
-    createButton.src = '../icons/plus-dark.png'
+    container.classList.add('darker');
     createButton.addEventListener('click', lightThemeToDo)
-    return createButton;
+    
+    return container;
 }
 
 export {createButton}
