@@ -1,12 +1,17 @@
+import { theme } from "./applySystemTheme";
+import contents from "..";
+import addIcon from '../icons/circle-white.png'
+
 const lightThemeToDo = () =>{
     const card = cardFactory();
     card.classList.add('light-card');
+    contents.appendChild(card);
 }
 
 const darkThemeToDo = () =>{
     const card = cardFactory();
     card.classList.add('dark-card');
-    
+    contents.appendChild(card);
 }
 
 const cardFactory = () => {
@@ -22,7 +27,16 @@ const cardFactory = () => {
     return card;
 }
 
-const gradientFactory = () =>{
-
+function createButton(){
+    const createButton = new Image(64, 64);
+    if(theme === 'dark'){    
+        createButton.src = addIcon;
+        createButton.addEventListener('click', lightThemeToDo)
+        return createButton;
+    }
+    createButton.src = '../icons/plus-dark.png'
+    createButton.addEventListener('click', lightThemeToDo)
+    return createButton;
 }
-export {lightThemeToDo, darkThemeToDo}
+
+export {createButton}
