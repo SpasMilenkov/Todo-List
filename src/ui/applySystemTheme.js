@@ -1,6 +1,8 @@
 import setDarkTheme from "./setDarkTheme";
 import setLightTheme from "./setLightTheme";
 
+let theme = 'dark';
+
 const setTheme = () => {
     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -9,7 +11,8 @@ const setTheme = () => {
     }
     else{
         setLightTheme();
+        theme = 'light'
     }
 }
 
-export default setTheme;
+export {setTheme, theme};
