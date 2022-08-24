@@ -1,12 +1,27 @@
 import '../style.css';
 import menuImage from '../icons/menu.png';
-const navBar = document.createElement('nav');
 
 function navigation(buttonTheme, theme) {
-
+    const navBar = document.createElement('nav');
     const ul = document.createElement('ul');
     const menu = document.createElement('li');
     const menuButton = new Image(48, 48);
+
+
+    function toggleExpand(){
+        if(!navBar.classList.contains('expanded')){
+            const viewProfile = document.createElement('li');
+            viewProfile.textContent = 'View profile';
+            
+            const viewCompleted = document.createElement('li');
+            viewCompleted.textContent = 'View completed sidequests';
+
+            ul.appendChild(viewProfile);
+            ul.appendChild(viewCompleted);
+        }
+
+        navBar.classList.toggle('expanded');
+    }
 
     menuButton.src = menuImage;
     menuButton.addEventListener('click', toggleExpand);
@@ -19,8 +34,5 @@ function navigation(buttonTheme, theme) {
     document.body.appendChild(navBar);
 }
 
-function toggleExpand(){
-    navBar.classList.toggle('expanded');       
-}
 
 export default navigation
