@@ -121,3 +121,44 @@ nav ul{
     font-size: 1.5rem;
     padding: 0.5rem;
 }
+
+#contents,
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#contents{
+    margin-top: 7em;
+    height: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: fit-content;
+    overflow: scroll;
+}
+
+.container{
+    width: 90%;
+    height: 5rem;
+    border-radius: 5px;
+}
+
+.lighter{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.darker{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.main-heading{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.todo{
+    height: 10rem;
+    width: 90%;
+}
+
