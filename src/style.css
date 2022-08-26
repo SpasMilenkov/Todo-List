@@ -179,3 +179,21 @@ nav ul{
     padding: 1rem;
     border-radius: 5px;
 }
+
+.form-dark-theme{
+    background-color: var(--dark-theme-dark-blue);
+}
+
+.form-light-theme{
+    background-color: var(--light-theme-dark-blue);
+}
+
+.form-light-theme,
+.form-dark-theme{
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
