@@ -2,7 +2,7 @@ import { container } from "webpack";
 import { theme } from "./applySystemTheme";
 
 const inputInfo = [];
-
+const form = renderForm();
 // Generates the container of the form
 function renderForm(){
     const container = document.createElement('div')
@@ -46,4 +46,10 @@ function radioButtonFactory(value, title){
     container.appendChild(radioTitle);
 
     return container;
+}
+
+//Function to clear the form 
+function clearForm(){
+    while(form.firstChild)
+        form.removeChild(form.firstChild);
 }
