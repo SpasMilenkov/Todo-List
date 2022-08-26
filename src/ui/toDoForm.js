@@ -13,6 +13,7 @@ function renderForm(){
         return container;
     }
     container.classList.add('form-light-theme');
+    container.appendChild(categoryChoice());
     return container;
 }
 //Generates the category selection page
@@ -30,6 +31,14 @@ function categoryChoice(){
     nextButton.textContent = 'Next'
     nextButton.addEventListener('click', addInfo);
 
+    container.appendChild(nextButton);
+
+    if(theme === 'dark'){
+        nextButton.classList.add('next-button-dark')
+        return container;
+    }
+    nextButton.classList.add('next-button-light');
+    return container
 }
 
 //Generates radio buttons with titles
@@ -52,4 +61,18 @@ function radioButtonFactory(value, title){
 function clearForm(){
     while(form.firstChild)
         form.removeChild(form.firstChild);
+}
+
+
+function textInputFactory(title,){
+    
+}
+
+
+//Function to generate the add info page
+function addINfo(){
+    clearForm();
+
+    textInputFactory(title)
+
 }
