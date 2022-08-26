@@ -73,22 +73,25 @@ table {
 }
 
 body{
-    overflow-y: hidden;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */  
     gap: 0.5rem;
 
 }
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
 
 nav{
     width: 100%;
     height: 10vh;
     min-height: 4em;
-    position: fixed;
-    top: 0px;
-
-    
 }
 
 nav ul{
@@ -140,12 +143,12 @@ nav ul{
 }
 
 #contents{
-    margin-top: 7em;
-    height: 100%;
+    /* margin-top: 6.6em; */
+    min-height: calc(100vh - 6rem);
     flex-direction: column;
     gap: 0.5rem;
     height: fit-content;
-    overflow-y: scroll;
+    justify-content: flex-start;
 }
 
 .container{
@@ -176,4 +179,3 @@ nav ul{
     padding: 1rem;
     border-radius: 5px;
 }
-
