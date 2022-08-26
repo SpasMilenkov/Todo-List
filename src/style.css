@@ -214,3 +214,18 @@ nav ul{
     padding: 0.5rem;
     border-radius: 5px;
 }
+
+.card-mini-light{
+    background-color: rgba(255, 255, 255, 0.3);
+
+}
+
+.card-mini-dark{
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.card-mini-light,
+.card-mini-dark{
+    width: 90%;
+    height: 3.5rem;
+}
