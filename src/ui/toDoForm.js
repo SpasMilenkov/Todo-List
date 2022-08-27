@@ -31,7 +31,7 @@ function categoryChoice(){
 
     const nextButton = document.createElement('button');
     nextButton.textContent = 'Next'
-    nextButton.addEventListener('click', addInfo);
+    nextButton.addEventListener('click', nextPage(addInfo()));
 
     container.appendChild(nextButton);
 
@@ -66,11 +66,11 @@ function clearForm(){
 }
 
 //Function to generate text input fields
-function textInputFactory(id,title){
+function textInputFactory(title){
     const container = document.createElement('div');
-    container.classList.add('card-mini');
+    container.classList.add('card-mini-dark');
     const text = document.createElement("INPUT");
-    const textTitle = document.createElement('h1')
+    const textTitle = document.createElement('h1');
     textTitle.textContent = title;
     text.setAttribute("type", "text");
     text.id = id;
@@ -80,16 +80,30 @@ function textInputFactory(id,title){
     return container;
     
 }
-//Function to switch to the next page
-function nextPage(){
-    clearForm();
-    addInfo()
-}
+
 
 //Function to generate the add info page
 function addInfo(){
-    textInputFactory(title)
+    const container = document.createElement('div');
+    const titleField = textInputFactory('Title:');
+    const descriptionField = textInputFactory('Description:');
 
+    const card = document.createElement('div');
+    card.classList.add('card-mini-dark');
+
+    const dateInputField = document.createElement('INPUT');
+    dateInputField.setAttribute('type', 'datetime');
+
+    const dateTitle = document.createElement('h1');
+    dateTitle.textContent = 'Enter deadline:';
+
+    container.appendChild(titleField);
+    container.appendChild(descriptionField);
+    card.appendChild(dateTitle)
+    card.appendChild(dateInputField)
+    container.appendChild(card);
+
+    return container;
 }
 
 
