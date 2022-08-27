@@ -1,8 +1,8 @@
-import { container } from "webpack";
 import { theme } from "./applySystemTheme";
 
 const inputInfo = [];
 const form = renderForm();
+form.appendChild(categoryChoice());
 
 // Generates the container of the form
 function renderForm(){
@@ -14,13 +14,12 @@ function renderForm(){
         return container;
     }
     container.classList.add('form-light-theme');
-    container.appendChild(categoryChoice());
     return container;
 }
 
 //Generates the category selection page
 function categoryChoice(){
-
+    const container = document.createElement('div')
     const mainTitle = document.createElement('h1')
     mainTitle.textContent = 'Categories '
 
@@ -31,7 +30,7 @@ function categoryChoice(){
 
     const nextButton = document.createElement('button');
     nextButton.textContent = 'Next'
-    nextButton.addEventListener('click', nextPage(addInfo()));
+    nextButton.addEventListener('click', addInfo);
 
     container.appendChild(nextButton);
 
@@ -73,7 +72,6 @@ function textInputFactory(title){
     const textTitle = document.createElement('h1');
     textTitle.textContent = title;
     text.setAttribute("type", "text");
-    text.id = id;
     container.appendChild(text);
     container.appendChild(textTitle);
 
@@ -84,6 +82,7 @@ function textInputFactory(title){
 
 //Function to generate the add info page
 function addInfo(){
+    clearForm();
     const container = document.createElement('div');
     const titleField = textInputFactory('Title:');
     const descriptionField = textInputFactory('Description:');
@@ -103,11 +102,7 @@ function addInfo(){
     card.appendChild(dateInputField)
     container.appendChild(card);
 
-    return container;
+    form.appendChild(container);
 }
 
-
-function nextPage(page){
-    clearForm()
-    form.appendChild(page);
-}
+export {form}
