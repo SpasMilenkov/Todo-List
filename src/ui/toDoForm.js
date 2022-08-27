@@ -3,6 +3,7 @@ import { theme } from "./applySystemTheme";
 
 const inputInfo = [];
 const form = renderForm();
+
 // Generates the container of the form
 function renderForm(){
     const container = document.createElement('div')
@@ -16,6 +17,7 @@ function renderForm(){
     container.appendChild(categoryChoice());
     return container;
 }
+
 //Generates the category selection page
 function categoryChoice(){
 
@@ -63,16 +65,29 @@ function clearForm(){
         form.removeChild(form.firstChild);
 }
 
+//Function to generate text input fields
+function textInputFactory(id,title){
+    const container = document.createElement('div');
+    container.classList.add('card-mini');
+    const text = document.createElement("INPUT");
+    const textTitle = document.createElement('h1')
+    textTitle.textContent = title;
+    text.setAttribute("type", "text");
+    text.id = id;
+    container.appendChild(text);
+    container.appendChild(textTitle);
 
-function textInputFactory(title,){
+    return container;
     
 }
-
+//Function to switch to the next page
+function nextPage(){
+    clearForm();
+    addInfo()
+}
 
 //Function to generate the add info page
-function addINfo(){
-    clearForm();
-
+function addInfo(){
     textInputFactory(title)
 
 }
