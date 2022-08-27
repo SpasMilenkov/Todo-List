@@ -3,7 +3,8 @@ import contents from "..";
 import work from '../images/work.jpg';
 import sport from '../images/sport.jpg';
 import relax from '../images/relax.jpg';
-import dropdown from '../icons/light-drop-down-arrow.png'
+import dropdown from '../icons/light-drop-down-arrow.png';
+import { form } from "./toDoForm";
 
 const lightThemeToDo = () =>{
     const card = cardFactory();
@@ -65,7 +66,9 @@ function createButton(){
     //fixes the theme of the button 
 
     if(theme === 'dark'){    
-        createButton.addEventListener('click', darkThemeToDo)
+        createButton.addEventListener('click', () =>{
+            contents.appendChild(form);
+        })
         container.classList.add('lighter');
         return container;
     }
