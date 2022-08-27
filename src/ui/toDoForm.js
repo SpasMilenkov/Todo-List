@@ -91,3 +91,9 @@ function addInfo(){
     textInputFactory(title)
 
 }
+
+
+function nextPage(page){
+    clearForm()
+    form.appendChild(page);
+}
