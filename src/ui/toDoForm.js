@@ -1,6 +1,8 @@
 import { theme } from "./applySystemTheme";
+import { addToDo, createToDO } from "../background/mediator";
+import { cardFactory } from "./createVisualToDo";
+import contents from "..";
 
-const inputInfo = [];
 const form = renderForm();
 form.appendChild(categoryChoice());
 
@@ -24,14 +26,26 @@ function categoryChoice(){
     mainTitle.textContent = 'Categories '
     mainTitle.classList.add('main-heading', 'nunito')
 
+
+    const work = radioButtonFactory('work', 'Work');
+    const sport = radioButtonFactory('sport', 'Sport');
+    const relax = radioButtonFactory('relax', 'Relax');
+
     container.appendChild(mainTitle);
-    container.appendChild(radioButtonFactory('work', 'Work'));
-    container.appendChild(radioButtonFactory('sport', 'Sport'));
-    container.appendChild(radioButtonFactory('relax', 'Relax'));
+    container.appendChild(work );
+    container.appendChild(relax);
+    container.appendChild(sport);
 
     const nextButton = document.createElement('button');
     nextButton.textContent = 'Next'
-    nextButton.addEventListener('click', addInfo);
+    nextButton.addEventListener('click', () =>{
+        if(work.childNodes[0].checked === true)
+            addInfo('work');
+        if(relax.childNodes[0].checked === true)
+            addInfo('relax');
+        if(sport.childNodes[0].checked === true)
+            addInfo('sport');
+    });
 
     container.appendChild(nextButton);
     container.classList.add('form-body');
@@ -100,7 +114,7 @@ function textInputFactory(title){
 }
 
 //Function to generate the add info page
-function addInfo(){
+function addInfo(category){
     clearForm();
     const container = document.createElement('div');
     container.classList.add('form-body');
@@ -112,17 +126,35 @@ function addInfo(){
 
 
     const dateInputField = document.createElement('INPUT');
+    const now = new Date();
+    dateInputField.value = now.toLocaleString();
     dateInputField.setAttribute('type', 'datetime');
 
     const dateTitle = document.createElement('h1');
     dateTitle.textContent = 'Enter deadline:';
     dateTitle.classList.add('main-heading', 'sans');
 
+    const createButton = document.createElement('button');
+    createButton.textContent = 'Create'
+    createButton.addEventListener('click', () => {
+        const title = titleField.childNodes[1].value;
+        const description = descriptionField.childNodes[1].value;
+        const date = dateInputField.value;
+        const toDo = createToDO(title, description, category, date)
+        addToDo(toDo);
+        const toDoCard = cardFactory(toDo);
+        contents.removeChild(contents.childNodes[contents.childElementCount - 1]);
+        contents.appendChild(toDoCard)
+        
+
+    })
+
     container.appendChild(titleField);
     container.appendChild(descriptionField);
     card.appendChild(dateTitle);
     card.appendChild(dateInputField);
     container.appendChild(card);
+    container.appendChild(createButton);
 
 
     form.appendChild(container);
