@@ -99,7 +99,6 @@ function textInputFactory(title){
     
 }
 
-
 //Function to generate the add info page
 function addInfo(){
     clearForm();
@@ -109,21 +108,33 @@ function addInfo(){
     const descriptionField = textInputFactory('Description:');
 
     const card = document.createElement('div');
-    card.classList.add('card-mini-dark');
+    card.style.flexDirection = 'column';
+
 
     const dateInputField = document.createElement('INPUT');
     dateInputField.setAttribute('type', 'datetime');
 
     const dateTitle = document.createElement('h1');
     dateTitle.textContent = 'Enter deadline:';
+    dateTitle.classList.add('main-heading', 'sans');
 
     container.appendChild(titleField);
     container.appendChild(descriptionField);
-    card.appendChild(dateTitle)
-    card.appendChild(dateInputField)
+    card.appendChild(dateTitle);
+    card.appendChild(dateInputField);
     container.appendChild(card);
 
+
     form.appendChild(container);
+    
+    if(theme=== 'dark'){
+        card.classList.add('card-mini-dark');
+        dateInputField.classList.add('dark-text-input', 'sans');
+        return;
+    }
+
+    card.classList.add('card-mini-light');
+    dateInputField.classList.add('light-text-input', 'sans');
 }
 
 export {form}
