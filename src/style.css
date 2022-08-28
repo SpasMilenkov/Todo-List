@@ -292,10 +292,25 @@ input[type="radio"]:focus {
 
 .dark-text-input{
     border-bottom: 3px solid var(--light-theme-blue);
+    color: white;
+}
+
+.dark-text-input:focus{
+    outline: solid 2px var(--dark-theme-light-blue);
+    border-radius: 5px;
+    border: none;
+    color: white;
 }
 
 .light-text-input{
     border-bottom: 3px solid var(--dark-theme-blue);
-    color: whitesmoke;
+    color: var(--light-theme-dark-blue);
+}
+
+.light-text-input:focus{
+    outline: solid 2px var(--dark-theme-light-blue);
+    border-radius: 5px;
+    border: none;
+    color: var(--light-theme-dark-blue);
 }
 
