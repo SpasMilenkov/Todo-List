@@ -3,7 +3,7 @@ import contents from "..";
 import work from '../images/work.jpg';
 import sport from '../images/sport.jpg';
 import relax from '../images/relax.jpg';
-import dropdown from '../icons/light-drop-down-arrow.png';
+import dropdownIcon from '../icons/light-drop-down-arrow.png';
 import { form } from "./toDoForm";
 
 const lightThemeToDo = () =>{
@@ -20,25 +20,23 @@ const darkThemeToDo = () =>{
 
 // gets called in the light and dark theme card gen
 
-const cardFactory = (category) => {
+const cardFactory = (todo) => {
     const card = document.createElement('div');
     const dropDown = new Image(16, 16);
-    dropDown.src = dropdown;
+    dropDown.src = dropdownIcon;
     const heading = document.createElement('h1');
     heading.classList.add('main-heading');
-
+    heading.textContent = todo.name;
+    stylizeCard(todo.category)
     function stylizeCard(type){
         let cards = {
             'work': function(){
-                heading.textContent = 'Test heading';
                 card.style.background = `linear-gradient(90deg, rgba(231,231,231,0.227328431372549) 0%, rgba(46,139,192,0.87718837535014) 63%), url('${work}')`;
             },
             'sport': function(){
-                heading.textContent = 'Test heading';
                 card.style.background = `linear-gradient(90deg, rgba(231,231,231,0.227328431372549) 0%, rgba(18,179,66,0.87718837535014) 47%), url('${sport}')`;
             },
             'relax': function(){
-                heading.textContent = 'Test heading';
                 card.style.background = `linear-gradient(90deg, rgba(231,231,231,0.227328431372549) 0%, rgba(174,7,176,0.87718837535014) 47%), url('${relax}')`;
             }
         }
@@ -54,6 +52,8 @@ const cardFactory = (category) => {
     
     return card;
 }
+
+
 
 function createButton(){
     const createButton = document.createElement('h1');
@@ -79,4 +79,4 @@ function createButton(){
     return container;
 }
 
-export {createButton}
+export {createButton, cardFactory}
