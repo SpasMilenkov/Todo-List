@@ -2,12 +2,13 @@ import { getAll } from "./mediator";
 
 class toDo{
 
-    constructor(name, description, category){
+    constructor(name, description, category, date){
         this.name = name;
         this.description = description;
         this.status = false;
         this.category = category;
         this.id = this.calcId();
+        this.date = new Date(date).toLocaleString();
     }
 
     calcId(){
