@@ -45,15 +45,22 @@ function categoryChoice(){
 //Generates radio buttons with titles
 function radioButtonFactory(value, title){
     const container = document.createElement('div');
-    container.classList.add('card-mini');
+
     const radio = document.createElement("INPUT");
     const radioTitle = document.createElement('h1')
     radioTitle.textContent = title;
+    radioTitle.classList.add('main-heading')
     radio.setAttribute("type", "radio");
     radio.value = value;
 
     container.appendChild(radio);
     container.appendChild(radioTitle);
+
+    if(theme=== 'dark'){
+        container.classList.add('card-mini-dark');
+        return container
+    }
+    container.classList.add('card-mini-light');
 
     return container;
 }
