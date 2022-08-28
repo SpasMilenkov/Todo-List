@@ -190,22 +190,30 @@ nav ul{
 
 .form-light-theme,
 .form-dark-theme{
-    width: 100%;
+
+    position: fixed;
+    top: 6rem;
+
+    width: 95%;
     height: 100%;
     z-index: 100;
+    padding-top: 1rem;
+
     display: flex;
-    align-items: center;
     justify-content: center;
+    gap: 1rem;
 }
 
 .next-button-light{
     background-color: var(--light-theme-green);
     color: var(--light-theme-white);
+    border: solid 2px var(--dark-theme-dark-blue);
 }
 
 .next-button-dark{
     background-color: var(--dark-theme-blue);
     color: var(--dark-theme-light-blue);
+    border: solid  2px var(--light-theme-white);
 }
 
 .next-button-dark,
@@ -227,4 +235,38 @@ nav ul{
 .card-mini-dark{
     width: 90%;
     height: 3.5rem;
+    min-width: 10rem;
+    display: flex;
+    gap: 1rem;
 }
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    border: solid 3px var(--dark-theme-blue);
+    font: inherit;
+    color: transparent;
+    width: 1.35em;
+    height: 1.35em;
+    border-radius: 50%;
+  }
+
+  input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+  }
+  input[type="radio"]:checked::before {
+    transform: scale(1);
+  }
+
+  input[type="radio"]:focus {
+    outline: transparent 1px;
+    outline-offset: max(2px, 0.15em);
+    background-color: var(--dark-theme-light-blue);
+  }
