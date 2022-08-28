@@ -22,6 +22,7 @@ function categoryChoice(){
     const container = document.createElement('div')
     const mainTitle = document.createElement('h1')
     mainTitle.textContent = 'Categories '
+    mainTitle.classList.add('main-heading', 'nunito')
 
     container.appendChild(mainTitle);
     container.appendChild(radioButtonFactory('work', 'Work'));
@@ -33,12 +34,14 @@ function categoryChoice(){
     nextButton.addEventListener('click', addInfo);
 
     container.appendChild(nextButton);
+    container.classList.add('form-body');
 
     if(theme === 'dark'){
         nextButton.classList.add('next-button-dark')
         return container;
     }
-    nextButton.classList.add('next-button-light');
+
+    nextButton.classList.add('next-button-light', 'sans');
     return container
 }
 
@@ -49,7 +52,7 @@ function radioButtonFactory(value, title){
     const radio = document.createElement("INPUT");
     const radioTitle = document.createElement('h1')
     radioTitle.textContent = title;
-    radioTitle.classList.add('main-heading')
+    radioTitle.classList.add('main-heading', 'sans')
     radio.setAttribute("type", "radio");
     radio.value = value;
 
@@ -75,13 +78,23 @@ function clearForm(){
 function textInputFactory(title){
     const container = document.createElement('div');
     container.classList.add('card-mini-dark');
+    container.style.flexDirection = 'column';
+
     const text = document.createElement("INPUT");
     const textTitle = document.createElement('h1');
     textTitle.textContent = title;
+    textTitle.classList.add('main-heading', 'sans')
     text.setAttribute("type", "text");
-    container.appendChild(text);
-    container.appendChild(textTitle);
 
+    container.appendChild(textTitle);
+    container.appendChild(text);
+
+    if(theme === 'dark'){
+        text.classList.add('dark-text-input');
+        return container
+    }
+
+    text.classList.add('light-text-input');
     return container;
     
 }
@@ -91,6 +104,7 @@ function textInputFactory(title){
 function addInfo(){
     clearForm();
     const container = document.createElement('div');
+    container.classList.add('form-body');
     const titleField = textInputFactory('Title:');
     const descriptionField = textInputFactory('Description:');
 
