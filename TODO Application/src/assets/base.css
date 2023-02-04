@@ -1,0 +1,23 @@
+:root{
+  /* mountain village theme */
+  --mountain-dark: #444558;
+  --mountain-yellow: #E6C49C;
+  --mountain-light-blue: #96C6D4;
+  --mountain-dark-blue: #7E93CD;
+  /* mountain village theme */
+
+  /* village sunset theme */
+  --sunset-brow: #AA5C46;
+  --sunset-ebony:#1A1531;
+  --sunset-yellow: #FBCE75;
+  --sunset-grey: #C0A0A4;
+  /* village sunset theme */
+
+
+  /* village noon theme */
+  --noon-yellow: #E5AC3B;
+  --noon-blue: #3D4F5D;
+  --noon-green: #B6CFC2;
+  --noon-brown: #964424;
+  /* village noon theme */
+}
