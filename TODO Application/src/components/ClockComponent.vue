@@ -1,10 +1,3 @@
-<template>
-  <div class="container">
-    <h1 class="time">{{ displayedTime }}</h1>
-  </div>
-</template>
-
-
 <script>
 export default {
   data: function () {
@@ -75,9 +68,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 15rem;
+  background: rgb(232, 255, 0);
+  background: linear-gradient(180deg, rgb(229, 172, 59) 50%, #3d4f5d 50%);
 }
 .time {
-  color: whitesmoke;
+  color: white;
   font-size: 4rem;
   font-family: "Robot", sans-serif;
 }
