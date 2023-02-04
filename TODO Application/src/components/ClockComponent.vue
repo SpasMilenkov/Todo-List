@@ -1,9 +1,11 @@
+<!-- eslint-disable prettier/prettier -->
 <script>
 export default {
   data: function () {
     return {
       displayedTime: "",
       clock: "",
+      offset: "linear-gradient(0deg, rgb(229, 172, 59) 50%, #3d4f5d 50%)",
     };
   },
   methods: {
@@ -12,15 +14,22 @@ export default {
       let time = new Date();
       this.displayedTime = time.toLocaleTimeString();
       let hours = time.getHours();
+      let offsetAmount = (time.getMinutes() + hours*60) / 5;
+      let newOffset = `linear-gradient(${offsetAmount*0.625}deg, rgb(229, 172, 59) 50%, #3d4f5d 50%)`;
+
+      if(newOffset !== this.offset)
+        this.offset = newOffset
 
       if (hours < 12) {
         this.clock = 'url("/public/images/morning.png")';
         return;
       }
+
       if (hours < 16 && hours > 12) {
         this.clock = 'url("/public/images/noon.png")';
         return;
       }
+      
       this.clock = 'url("/public/images/evening.png")';
     },
   },
@@ -38,6 +47,7 @@ export default {
     </div>
   </div>
 </template>
+
 <style scoped>
 .container {
   width: 30rem;
@@ -70,7 +80,7 @@ export default {
   justify-content: center;
   border-radius: 15rem;
   background: rgb(232, 255, 0);
-  background: linear-gradient(180deg, rgb(229, 172, 59) 50%, #3d4f5d 50%);
+  background: v-bind(offset);
 }
 .time {
   color: white;
