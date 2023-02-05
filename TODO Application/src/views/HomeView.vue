@@ -1,6 +1,6 @@
 <script setup>
-import ClockComponent from '../components/ClockComponent.vue';
-import TodoDisplayComponent from '../components/TodoDisplayComponent.vue';
+import ClockComponent from '../components/ClockComponent.vue'
+import TodoDisplayComponent from '../components/TodoDisplayComponent.vue'
 </script>
 
 <template>
@@ -10,7 +10,7 @@ import TodoDisplayComponent from '../components/TodoDisplayComponent.vue';
   </main>
 </template>
 <style scoped>
-#home-main{
+#home-main {
   display: flex;
   gap: 2rem;
   padding: 1rem;
