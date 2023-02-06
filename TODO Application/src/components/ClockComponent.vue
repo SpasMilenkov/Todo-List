@@ -1,5 +1,6 @@
 <script>
 export default {
+  props: ['sunrise', 'sunset'],
   data: function () {
     return {
       displayedTime: '',
@@ -15,23 +16,19 @@ export default {
       let time = new Date()
       this.displayedTime = time.toLocaleTimeString()
       let hours = time.getHours()
-      let offsetAmount = time.getMinutes() + hours * 60
-      let newOffset = `linear-gradient(${
-        -offsetAmount * 0.625
-      }deg, rgb(229, 172, 59) 50%, #3d4f5d 50%)`
 
-      if (newOffset !== this.offset) this.offset = newOffset
-
-      if (hours < 12) {
+      if (hours <= 12) {
         this.clock = 'url("/public/images/morning.png")'
         return
       }
-
       if (hours < 16 && hours > 12) {
-        this.clock = 'url("/public/images/morning.png")'
+        this.clock = 'url("/public/images/noon.png")'
         return
       }
-
+      if (hours >= 16 && hours < 20) {
+        this.clock = 'url("/public/images/evening.png")'
+        return
+      }
       this.clock = 'url("/public/images/night.png")'
     },
     async generateQuote() {
@@ -53,10 +50,8 @@ export default {
 </script>
 <template>
   <div class="container">
-    <div class="mask">
-      <div class="fill">
-        <h1 class="time">{{ displayedTime }}</h1>
-      </div>
+    <div class="fill">
+      <h1 class="time">{{ displayedTime }}</h1>
     </div>
     <h1 id="quote">
       {{ quote }} <br />
@@ -68,14 +63,15 @@ export default {
 <style scoped>
 .container {
   width: 30rem;
-  height: 50rem;
+  min-height: 50rem;
+  height: calc(100vh - 4rem);
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   align-items: center;
-  gap: 1rem;
+  gap: 5rem;
   z-index: 1;
   background: inherit;
   overflow: hidden;
@@ -95,8 +91,8 @@ export default {
   margin: -20px;
 }
 .container .fill {
-  width: 29rem;
-  height: 29rem;
+  width: 30rem;
+  height: 30rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,16 +104,6 @@ export default {
   background-blend-mode: darken;
   background-repeat: no-repeat;
 }
-.container .mask {
-  width: 30rem;
-  height: 30rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15rem;
-  background: rgb(232, 255, 0);
-  background: v-bind(offset);
-}
 .time {
   color: white;
   font-size: 4rem;
@@ -125,7 +111,7 @@ export default {
 }
 #quote {
   font-family: var(--main-title);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: white;
   text-align: center;
 }
