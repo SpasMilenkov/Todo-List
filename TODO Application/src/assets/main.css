@@ -58,5 +58,32 @@ body{
 	/* noon theme gradient */
 	background: linear-gradient(330deg, #e5ac3b, #c87225, #964424);
 	/* sunset theme gradient */
-	background: linear-gradient(330deg, #aa5c46, #6d2e61, rgba(26,21,49,1))
+	background: linear-gradient(330deg, #aa5c46, #6d2e61, rgba(26,21,49,1));
+
+	overflow: hidden;
 }
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	position: relative;
+	z-index: 1;
+	background: inherit;
+	overflow: hidden;
+	padding: 1rem;
+  }
+  .container:before {
+	content: '';
+	position: absolute;
+	background: inherit;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+	filter: blur(10px);
+	margin: -20px;
+  }
