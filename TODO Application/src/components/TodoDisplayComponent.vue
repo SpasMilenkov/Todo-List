@@ -1,32 +1,18 @@
 <template>
   <div class="container">
-    <h1>What needs to be done?</h1>
+    <h1 class="main-title">What needs to be done?</h1>
   </div>
 </template>
 <script></script>
 
 <style scoped>
 .container {
-  width: 30rem;
-  height: 30rem;
-  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  position: relative;
-  z-index: 1;
-  background: inherit;
-  overflow: hidden;
+  padding: 1;
 }
-.container:before {
-  content: '';
-  position: absolute;
-  background: inherit;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
-  filter: blur(10px);
-  margin: -20px;
+.main-title {
+  font-family: var(--main-title);
+  font-size: 1.4rem;
+  color: white;
+  text-align: center;
 }
 </style>
