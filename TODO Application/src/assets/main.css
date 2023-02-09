@@ -51,17 +51,30 @@ table {
 /* CSS RESET */
 
 body{
-	/* night theme gradient */
-	background: linear-gradient(135deg, #271d32, #833866, rgba(205,125,90,1));
+
 	/* morning theme gradient */
 	background: linear-gradient(45deg, #444558, #b35c9e, rgba(230,196,156,1));
 	/* noon theme gradient */
 	background: linear-gradient(330deg, #e5ac3b, #c87225, #964424);
 	/* sunset theme gradient */
 	background: linear-gradient(330deg, #aa5c46, #6d2e61, rgba(26,21,49,1));
+	/* night theme gradient */
+	background: linear-gradient(135deg, #271d32, #833866, rgba(205,125,90,1));
 
 	overflow: hidden;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: rgba(255, 255, 255, 0.6);
+	opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: rgba(255, 255, 255, 0.6);
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+	color: rgba(255, 255, 255, 0.6);
+  }
 .container {
 	display: flex;
 	align-items: center;
