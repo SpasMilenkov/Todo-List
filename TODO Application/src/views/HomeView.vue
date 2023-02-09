@@ -1,6 +1,7 @@
 <script>
 import QuoteComponent from '../components/QuoteComponent.vue'
 import TodoDisplayComponent from '../components/TodoDisplayComponent.vue'
+import ForecastComponent from '../components/ForecastComponent.vue'
 import axios from 'axios'
 export default {
   data: function () {
@@ -8,26 +9,11 @@ export default {
       sunset: 0,
       sunrise: 0,
       clock: '',
+      lat: 0.0,
+      long: 0.0,
     }
   },
   methods: {
-    async getDayTime() {
-      let lat = 0.0
-      let long = 0.0
-      navigator.geolocation.getCurrentPosition((position) => {
-        lat = position.coords.latitude.toFixed(4)
-        long = position.coords.longitude.toFixed(4)
-      })
-      await axios
-        .get(`https://api.sunrise-sunset.org/json?lat=${lat}lng=${long}`)
-        .then((result) => result.data.results)
-        .then((data) => {
-          this.sunset = data.sunset.split(':')[0]
-          this.sunrise = data.sunrise.split(':')[0]
-        })
-        .catch(() => console.log('bad'))
-    },
-
     syncTheme() {
       const time = new Date()
       const hours = time.getHours()
@@ -55,12 +41,12 @@ export default {
     },
   },
   mounted() {
-    this.getDayTime()
     this.syncTheme()
   },
   components: {
     QuoteComponent,
     TodoDisplayComponent,
+    ForecastComponent,
   },
 }
 </script>
@@ -71,6 +57,7 @@ export default {
       <div id="theme-picture"></div>
       <QuoteComponent id="quote"></QuoteComponent>
       <TodoDisplayComponent id="todo"></TodoDisplayComponent>
+      <ForecastComponent></ForecastComponent>
     </div>
   </main>
 </template>
