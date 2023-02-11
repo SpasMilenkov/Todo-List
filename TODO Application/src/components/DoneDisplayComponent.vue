@@ -2,38 +2,20 @@
 import TodoCard from './TodoCardComponent.vue'
 export default {
   data: function () {
-    return {
-      items: [],
-    }
+    return {}
   },
   components: {
     TodoCard,
-  },
-  methods: {
-    getAllItems() {
-      let values = [],
-        keys = Object.keys(localStorage),
-        i = keys.length
-
-      while (i--) {
-        values.push(localStorage.getItem(keys[i]))
-      }
-      this.items = values
-    },
-  },
-  mounted() {
-    this.getAllItems()
-    this.emitter.on('todo-added', (todo) => {
-      this.items.push(todo)
-    })
   },
 }
 </script>
 <template>
   <div class="container">
-    <h1 class="main-title">TODO:</h1>
+    <h1 class="main-title">DONE:</h1>
     <div class="wrapper">
-      <TodoCard v-for="item in items" :todo="item" :key="item.id" />
+      <TodoCard />
+      <TodoCard />
+      <TodoCard />
     </div>
   </div>
 </template>
