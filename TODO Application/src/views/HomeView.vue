@@ -1,8 +1,9 @@
 <script>
 import QuoteComponent from '../components/QuoteComponent.vue'
-import TodoDisplayComponent from '../components/TodoDisplayComponent.vue'
+import TodoCreateComponent from '../components/TodoCreateComponent.vue'
 import ForecastComponent from '../components/ForecastComponent.vue'
-import axios from 'axios'
+import TodoDisplayComponent from '../components/TodoDisplayComponent.vue'
+import DoneDisplayComponent from '../components/DoneDisplayComponent.vue'
 export default {
   data: function () {
     return {
@@ -47,6 +48,8 @@ export default {
     QuoteComponent,
     TodoDisplayComponent,
     ForecastComponent,
+    TodoCreateComponent,
+    DoneDisplayComponent,
   },
 }
 </script>
@@ -56,8 +59,10 @@ export default {
     <div class="wrapper">
       <div id="theme-picture"></div>
       <QuoteComponent id="quote"></QuoteComponent>
-      <TodoDisplayComponent id="todo"></TodoDisplayComponent>
-      <ForecastComponent></ForecastComponent>
+      <TodoCreateComponent id="todo"></TodoCreateComponent>
+      <ForecastComponent id="forecast"></ForecastComponent>
+      <TodoDisplayComponent></TodoDisplayComponent>
+      <DoneDisplayComponent></DoneDisplayComponent>
     </div>
   </main>
 </template>
@@ -66,8 +71,7 @@ export default {
   display: flex;
   gap: 2rem;
   padding: 1rem;
-  height: calc(100vh - 7rem);
-  width: calc(100vw - 4rem);
+  padding: 1rem;
   background-attachment: fixed;
 }
 #theme-picture {
@@ -84,6 +88,8 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 1rem;
+  width: 100%;
+  height: 100%;
 }
 #quote {
   grid-column: 1;
@@ -92,5 +98,9 @@ export default {
 #todo {
   grid-column: 2;
   grid-row: 1;
+}
+#forecast {
+  grid-column: 2;
+  grid-row: 2;
 }
 </style>
