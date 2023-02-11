@@ -29,8 +29,8 @@ import ClockComponent from './components/ClockComponent.vue'
   align-items: center;
   gap: 1rem;
 }
-.wrapper{
-  widows: 20vw;
+.wrapper {
+  width: 20vw;
   min-width: 15rem;
 }
 </style>

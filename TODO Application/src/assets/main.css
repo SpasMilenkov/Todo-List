@@ -49,9 +49,13 @@ table {
 	border-spacing: 0;
 }
 /* CSS RESET */
-
+html {
+	height: 100%;
+	width: 100%;
+}
 body{
-
+	height: 100%;
+	width: 100%;
 	/* morning theme gradient */
 	background: linear-gradient(45deg, #444558, #b35c9e, rgba(230,196,156,1));
 	/* noon theme gradient */
@@ -75,6 +79,10 @@ body{
   ::-ms-input-placeholder { /* Microsoft Edge */
 	color: rgba(255, 255, 255, 0.6);
   }
+#app {
+	width: 100%;
+	height: 100%;
+}
 .container {
 	display: flex;
 	align-items: center;
@@ -99,4 +107,10 @@ body{
 	box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
 	filter: blur(10px);
 	margin: -20px;
+  }
+  .main-title {
+	font-family: var(--main-title);
+	font-size: 1.4rem;
+	color: white;
+	text-align: center;
   }
