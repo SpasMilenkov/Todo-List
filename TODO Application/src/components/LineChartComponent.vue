@@ -1,5 +1,5 @@
 <template>
-  <Line :data="data" :options="options" />
+  <Line :data="chartData" :options="chartOptions" />
 </template>
 
 <script>
@@ -14,7 +14,6 @@ import {
   Legend,
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
-import * as chartConfig from './chartConfig.js'
 
 ChartJS.register(
   CategoryScale,
@@ -25,24 +24,20 @@ ChartJS.register(
   Tooltip,
   Legend
 )
-
 export default {
   name: 'App',
-  props: ['title', 'labels', 'dataset'],
+  props: {
+    chartData: {
+      type: Object,
+      required: true,
+    },
+    chartOptions: {
+      type: Object,
+      default: () => {},
+    },
+  },
   components: {
     Line,
-  },
-  data() {
-    return chartConfig
-  },
-  mounted() {
-    chartConfig.data.datasets = {
-      label: this.title,
-      backgroundColor: '#f87979',
-      data: this.dataset,
-    }
-    chartConfig.data.labels = this.labels
-    chartConfig.data.labels = this.data
   },
 }
 </script>
