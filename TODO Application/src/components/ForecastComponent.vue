@@ -46,7 +46,7 @@ export default {
                 label: 'temperature',
                 backgroundColor: '',
                 data: dailyTemperatures,
-                borderColor: '#51A7B6',
+                borderColor: 'red',
                 pointBackgroundColor: '#51A7B6',
                 pointBorderColor: '#51A7B6',
               },
@@ -65,21 +65,26 @@ export default {
               y: {
                 beginAtZero: true,
                 ticks: {
-                  color: '#1A1531',
+                  color: 'white ',
                 },
                 grid: {
-                  color: '#1A1531',
+                  color: 'rgba(255,255,255, 1)',
+                  lineWidth: 2,
                 },
               },
               x: {
                 beginAtZero: true,
                 ticks: {
-                  color: '#1A1531',
+                  color: 'white',
                 },
                 grid: {
-                  color: '#1A1531',
+                  color: 'rgba(255,255,255, 1)',
+                  lineWidth: 2,
                 },
               },
+            },
+            line: {
+              backgroundColor: 'rgb(132, 219, 255)',
             },
           }
           this.isDataFetched = true
@@ -112,7 +117,7 @@ export default {
 }
 </script>
 <template>
-  <div class="container" v-if="isDataFetched">
+  <div v-if="isDataFetched">
     <div id="precipitation-icon">
       <img src="/images/drop-icon.png" alt="Water drop" />
     </div>
@@ -142,7 +147,7 @@ export default {
 .container {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 15% 15% 70%;
+  grid-template-rows: 10% 15% 75%;
 }
 #temperature,
 #precipitation,
