@@ -29,53 +29,64 @@ export default {
       this.title = ''
       this.description = ''
       this.deadline = ''
+      this.emitter.emit('todo-added', this.toDo)
     },
-  },
-  mounted() {
-    this.emitter.emit('todo-added', this.toDo)
   },
 }
 </script>
 
-
 <template>
-  <div v-if="!creating" class="container" @click="loadForm">
-    <h1 class="main-title">What needs to be done?</h1>
-  </div>
-  <div v-if="creating" id="input-wrapper" class="container">
-    <input
-      v-model="title"
-      type="text"
-      name="title"
-      id="title-input"
-      placeholder="Enter title"
-    />
-    <textarea
-      v-model="description"
-      name="description"
-      id="description-input"
-      cols="30"
-      rows="10"
-      placeholder="Enter description..."
-    ></textarea>
-    <input
-      v-model="deadline"
-      type="datetime-local"
-      name="time"
-      id="time-input"
-    />
-    <div class="button-wrapper">
-      <button @click="createToDo" class="button">create</button>
-      <button @click="closeForm" class="button">cancel</button>
+  <div class="wrapper">
+    <div v-if="!creating" @click="loadForm">
+      <h1 class="main-title">What needs to be done?</h1>
+    </div>
+    <div v-if="creating" id="input-wrapper">
+      <input
+        v-model="title"
+        type="text"
+        name="title"
+        id="title-input"
+        placeholder="Enter title"
+      />
+      <textarea
+        v-model="description"
+        name="description"
+        id="description-input"
+        cols="30"
+        rows="10"
+        placeholder="Enter description..."
+      ></textarea>
+      <input
+        v-model="deadline"
+        type="datetime-local"
+        name="time"
+        id="time-input"
+      />
+      <div class="button-wrapper">
+        <button @click="createToDo" class="button">create</button>
+        <button @click="closeForm" class="button">cancel</button>
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
+.wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
 #input-wrapper {
   display: flex;
   flex-direction: column;
   justify-items: center;
+  align-items: center;
   gap: 1rem;
+  width: 100%;
+  height: 90%;
+  padding: 1rem;
 }
 #title-input,
 #description-input,
