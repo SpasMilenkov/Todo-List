@@ -13,17 +13,21 @@ import ClockComponent from './components/ClockComponent.vue'
       <li><a href="">Dummy 2</a></li>
     </ul>
   </nav>
-  <HomeView></HomeView>
+  <HomeView></HomeView> 
 </template>
 
 <style scoped>
 #navigation {
-  width: calc(100vw - 2rem);
-  height: 3rem;
+  height: 5%;
   border-radius: 0px;
+  box-sizing: border-box;
+}
+#home {
+  height: 95%;
 }
 #navigation-container {
   width: 90%;
+  height: 5%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
