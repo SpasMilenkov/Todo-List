@@ -25,7 +25,7 @@ export default {
 }
 </script>
 <template>
-  <div v-if="loaded" class="container">
+  <div v-if="loaded">
     <h1 id="quote">
       {{ quote }} <br />
       <br />
