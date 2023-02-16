@@ -16,7 +16,7 @@ export default {
         i = keys.length
 
       while (i--) {
-        values.push(localStorage.getItem(keys[i]))
+        values.push(JSON.parse(localStorage.getItem(keys[i])))
       }
       this.items = values
     },
@@ -24,13 +24,13 @@ export default {
   mounted() {
     this.getAllItems()
     this.emitter.on('todo-added', (todo) => {
-      this.items.push(todo)
+      this.items.push(JSON.parse(todo))
     })
   },
 }
 </script>
 <template>
-  <div class="container">
+  <div id="todo-list">
     <h1 class="main-title">TODO:</h1>
     <div class="wrapper">
       <TodoCard v-for="item in items" :todo="item" :key="item.id" />
@@ -43,6 +43,10 @@ export default {
   flex-direction: column;
   padding: 1rem;
 }
+#todo-list {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 .main-title {
   text-align: left;
   width: 100%;
@@ -51,12 +55,15 @@ export default {
 }
 .wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   width: 100%;
   height: 100%;
   padding: 0;
   gap: 1rem;
   padding: 0.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+
 }
 </style>
