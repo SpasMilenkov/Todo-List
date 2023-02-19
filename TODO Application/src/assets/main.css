@@ -56,12 +56,6 @@ html {
 body{
 	height: 100%;
 	width: 100%;
-	/* background: linear-gradient(135deg, #484b84, #56b7db, #96ffd4);
-	background: linear-gradient(330deg, #e5ac3b, #c87225, #964424);
-	background: linear-gradient(330deg, #aa5c46, #6d2e61, rgba(26,21,49,1));
-	background: linear-gradient(120deg, #271d32, #3d3275, rgba(60,82,195,1)); */
-
-
 	/* overflow: hidden; */
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -110,4 +104,38 @@ body{
 	font-size: 1.4rem;
 	color: white;
 	text-align: center;
+  }
+  .icon {
+	font-size: 2rem;
+  }
+  @media only-screen and (max-width: 800px) {
+	#home-main {
+	  height: 600vh;
+	}
+	#theme-picture {
+	  grid-column: 1;
+	  grid-row: 1;
+	}
+	.main-wrapper {
+	  grid-template-columns: 1fr;
+	  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+	}
+	#quote {
+	  grid-column: 1;
+	  grid-row: 2;
+	}
+	#todo {
+	  grid-column: 1;
+	  grid-row: 3;
+	}
+	#next-up {
+	  grid-column: 1;
+	  grid-row: 4;
+	  align-items: flex-start;
+	}
+	#list {
+	  grid-row-start: 1;
+	  grid-row-end: 5 span;
+	  grid-column: 6;
+	}
   }
