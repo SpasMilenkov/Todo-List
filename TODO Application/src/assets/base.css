@@ -1,0 +1,36 @@
+:root{
+  /* mountain village theme */
+  --mountain-dark: rgb(68, 69, 88);
+  --mountain-yellow: rgb(230, 196, 156);
+  --mountain-light-blue: rgb(150, 198, 212);
+  --mountain-dark-blue: rgb(126, 147, 205);
+  /* mountain village theme */
+
+  /* village sunset theme */
+  --sunset-brown: rgb(170, 92, 70);
+  --sunset-ebony:rgb(26, 21, 49);
+  --sunset-yellow: rgb(251, 206, 117);
+  --sunset-grey: rgb(192, 160, 164);
+  /* village sunset theme */
+
+
+  /* village noon theme */
+  --noon-yellow: rgb(230, 173, 59);
+  --noon-blue: rgb(61, 79, 93);
+  --noon-green: rgb(182, 207, 194);
+  --noon-brown: rgb(150, 68, 36);
+  /* village noon theme */
+
+  /* village night theme */
+  --night-black: rgb(39, 29, 50);
+  --night-orange: rgb(205, 125, 90);
+  --night-blue: rgb(60, 82, 195);
+  --night-green: rgb(81, 167, 182);
+    /* village night theme */
+
+  /* FONTS */
+  --paragraph-font: 'Nunito Sans', sans-serif;
+  --subtitle-font: 'Ubuntu', sans-serif;
+  --main-title: 'Varela Round', sans-serif;
+  /* FONTS */
+}

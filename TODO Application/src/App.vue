@@ -1,11 +1,9 @@
 <script setup>
-
+import HomeView from './views/HomeView.vue'
+import Navigation from './components/GenericComponents/NavigationComponent.vue'
 </script>
 
 <template>
-  <h1>Hello world</h1>
+  <Navigation></Navigation>
+  <HomeView></HomeView>
 </template>
-
-<style scoped>
-
-</style>
