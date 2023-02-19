@@ -1,64 +1,70 @@
 <script>
-import QuoteComponent from '../components/QuoteComponent.vue'
-import TodoCreateComponent from '../components/TodoCreateComponent.vue'
-import ForecastComponent from '../components/ForecastComponent.vue'
-import TodoDisplayComponent from '../components/TodoDisplayComponent.vue'
+import QuoteComponent from '../components/GenericComponents/QuoteComponent.vue'
+import TodoCreateComponent from '../components/TodoComponents/TodoCreateComponent.vue'
+import TodoCard from '../components/TodoComponents/TodoCardComponent.vue'
+import TodoDisplayComponent from '../components/TodoComponents/TodoDisplayComponent.vue'
+import theme from '../Sync'
 export default {
   data: function () {
     return {
-      sunset: 0,
-      sunrise: 0,
-      clock: '',
-      lat: 0.0,
-      long: 0.0,
+      image: '',
       brightness: 'inset 0 0 2000px rgba(255, 255, 255, 0.5)',
       background:
         'linear-gradient(45deg, #444558, #b35c9e, rgba(230,196,156,1))',
+      items: [],
+      closest: {},
+      datePick: 'white',
     }
   },
   methods: {
     syncTheme() {
-      const time = new Date()
-      const hours = time.getHours()
-      
-      if (hours <= 12) {
-        this.clock = 'url("/images/morning.png")'
-        this.background =
-          'linear-gradient(45deg, #444558, #b35c9e, rgba(230,196,156,1))'
-        setTimeout(this.syncTheme, 60000)
+      this.image = theme.image
+      this.brightness = theme.brightness
+      this.datePick = theme.datePick
+      this.background = theme.bodyBackground
+      console.log(theme)
+      setTimeout(this.syncTheme, 300000)
+    },
+    getAllItems() {
+      let values = [],
+        keys = Object.keys(localStorage),
+        i = keys.length
 
-        return
+      while (i--) {
+        values.push(JSON.parse(localStorage.getItem(keys[i])))
       }
-      if (hours < 16 && hours > 12) {
-        this.clock = 'url("/images/noon.png")'
-        this.background = 'linear-gradient(330deg, #e5ac3b, #c87225, #964424)'
-        setTimeout(this.syncTheme, 60000)
-
-        return
-      }
-      if (hours >= 16 && hours < 20) {
-        this.clock = 'url("/images/evening.png")'
-        this.brightness = `inset 0 0 2000px rgba(255, 255, 255, 0.3)`
-        this.background =
-          'linear-gradient(330deg, #aa5c46, #6d2e61, rgba(26,21,49,1))'
-        setTimeout(this.syncTheme, 60000)
-
-        return
-      }
-      this.clock = 'url("/images/night.png")'
-      this.brightness = `inset 0 0 2000px rgba(255, 255, 255, 0.3)`
-      this.background =
-        'linear-gradient(120deg, #271d32, #3d3275, rgba(60,82,195,1))'
-      setTimeout(this.syncTheme, 60000)
+      this.items = values
+    },
+    getClosest() {
+      this.items.sort((a, b) => {
+        new Date(a.expire).getTime() - new Date(b.expire).getTime()
+      })
+      console.log(this.items[0])
+      console.log(this.items)
+      this.closest = this.items[0]
     },
   },
   mounted() {
     this.syncTheme()
+    this.getAllItems()
+    this.getClosest()
+    this.emitter.on('todo-added', (todo) => {
+      this.items.push(JSON.parse(todo))
+    })
+    this.emitter.on('taskDelete', (task) => {
+      const index = this.items
+        .map(function (x) {
+          return x.title
+        })
+        .indexOf(task)
+      if (index !== -1) this.items.splice(index, 1)
+      this.getClosest()
+    })
   },
   components: {
     QuoteComponent,
     TodoDisplayComponent,
-    ForecastComponent,
+    TodoCard,
     TodoCreateComponent,
   },
 }
@@ -70,14 +76,29 @@ export default {
       <div id="theme-picture"></div>
       <QuoteComponent id="quote" class="container"></QuoteComponent>
       <TodoCreateComponent id="todo" class="container"></TodoCreateComponent>
-      <ForecastComponent id="forecast" class="container"></ForecastComponent>
-      <TodoDisplayComponent id="list" class="container"></TodoDisplayComponent>
+      <section id="next-up" class="container">
+        <h1 class="main-title">Next up:</h1>
+        <TodoCard :todo="closest"></TodoCard>
+      </section>
+      <TodoDisplayComponent
+        id="list"
+        class="container"
+        :items="items"
+      ></TodoDisplayComponent>
     </div>
   </main>
 </template>
 <style scoped>
 .container:before {
   box-shadow: v-bind(brightness);
+}
+.container {
+  flex-direction: column;
+  gap: 1rem;
+}
+.main-title {
+  padding-left: 0.5rem;
+  font-size: 1.5rem;
 }
 #home-main {
   display: flex;
@@ -91,7 +112,7 @@ export default {
   box-sizing: border-box;
 }
 #theme-picture {
-  background-image: v-bind(clock);
+  background-image: v-bind(image);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -115,9 +136,10 @@ export default {
   grid-column: 2;
   grid-row: 1;
 }
-#forecast {
+#next-up {
   grid-column: 2;
   grid-row: 2;
+  align-items: flex-start;
 }
 #list {
   grid-row-start: 1;

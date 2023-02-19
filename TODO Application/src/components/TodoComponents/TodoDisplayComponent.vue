@@ -1,30 +1,32 @@
 <script>
 import TodoCard from './TodoCardComponent.vue'
 export default {
+  props: ['items', 'cardBackground'],
   data: function () {
     return {
-      items: [],
+      tasks: [],
     }
   },
   components: {
     TodoCard,
   },
-  methods: {
-    getAllItems() {
-      let values = [],
-        keys = Object.keys(localStorage),
-        i = keys.length
-
-      while (i--) {
-        values.push(JSON.parse(localStorage.getItem(keys[i])))
-      }
-      this.items = values
+  methods: {},
+  watch: {
+    items: function () {
+      this.tasks = this.items
     },
   },
   mounted() {
-    this.getAllItems()
     this.emitter.on('todo-added', (todo) => {
-      this.items.push(JSON.parse(todo))
+      this.tasks.push(JSON.parse(todo))
+    })
+    this.emitter.on('deleteTask', (task) => {
+      const index = this.tasks
+        .map(function (x) {
+          return x.title
+        })
+        .indexOf(task)
+      if (index !== -1) this.tasks.splice(index, 1)
     })
   },
 }
@@ -33,16 +35,12 @@ export default {
   <div id="todo-list">
     <h1 class="main-title">TODO:</h1>
     <div class="wrapper">
-      <TodoCard v-for="item in items" :todo="item" :key="item.id" />
+      <TodoCard v-for="task in tasks" :todo="task" :key="task.id" />
     </div>
   </div>
 </template>
 
 <style scoped>
-.container {
-  flex-direction: column;
-  padding: 1rem;
-}
 #todo-list {
   overflow-y: auto;
   overflow-x: hidden;
@@ -64,6 +62,5 @@ export default {
   padding: 0.5rem;
   overflow-y: auto;
   overflow-x: hidden;
-
 }
 </style>

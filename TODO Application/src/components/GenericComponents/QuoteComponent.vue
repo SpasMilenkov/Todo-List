@@ -14,7 +14,7 @@ export default {
         .then((response) => response.json())
         .then((data) => {
           this.quote = `"${data[rnd].text}"`
-          this.author = [rnd].author == null ? 'Unknown' : data[rnd].author
+          this.author = [rnd].author === null ? 'Unknown' : data[rnd].author
           this.loaded = true
         })
     },

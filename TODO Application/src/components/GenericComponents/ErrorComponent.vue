@@ -6,6 +6,13 @@
 
 <style scoped>
 #error {
-  font-size: 10rem;
+  font-size: 8rem;
+}
+.main-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 </style>
