@@ -1,5 +1,5 @@
 <script>
-import ForecastComponent from '../components/ForecastComponent.vue';
+import ForecastComponent from '../components/ForecastComponents/ForecastComponent.vue'
 
 export default {
   data: function () {

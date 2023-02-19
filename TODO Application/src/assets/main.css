@@ -108,6 +108,12 @@ body{
   .icon {
 	font-size: 2rem;
   }
+  .flex-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+  }
   @media only-screen and (max-width: 800px) {
 	#home-main {
 	  height: 600vh;

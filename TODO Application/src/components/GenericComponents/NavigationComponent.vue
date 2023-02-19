@@ -7,12 +7,12 @@ export default {
 }
 </script>
 <template>
-  <nav id="navigation" class="container">
+  <nav id="navigation" class="flex-container">
     <div class="wrapper">
       <Clock></Clock>
     </div>
     <ul id="navigation-container">
-      <li><a href="">Dummy 1</a></li>
+      <li><router-link :to="'/forecast'">Forecast</router-link></li>
       <li><a href="">Dummy 2</a></li>
     </ul>
   </nav>
@@ -22,6 +22,8 @@ export default {
   height: 5%;
   border-radius: 0px;
   box-sizing: border-box;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 #home {
   height: 95%;

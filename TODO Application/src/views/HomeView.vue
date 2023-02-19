@@ -14,6 +14,7 @@ export default {
       items: [],
       closest: {},
       datePick: 'white',
+      updateKey: 1,
     }
   },
   methods: {
@@ -42,6 +43,7 @@ export default {
       console.log(this.items[0])
       console.log(this.items)
       this.closest = this.items[0]
+      this.updateKey += 1
     },
   },
   mounted() {
@@ -49,9 +51,19 @@ export default {
     this.getAllItems()
     this.getClosest()
     this.emitter.on('todo-added', (todo) => {
-      this.items.push(JSON.parse(todo))
+      this.getClosest()
     })
-    this.emitter.on('taskDelete', (task) => {
+    this.emitter.on('deleteTask', (task) => {
+      const index = this.items
+        .map(function (x) {
+          return x.title
+        })
+        .indexOf(task)
+      if (index !== -1) this.items.splice(index, 1)
+      this.getClosest()
+      console.log(this.closest)
+    })
+    this.emitter.on('taskDone', (task) => {
       const index = this.items
         .map(function (x) {
           return x.title
@@ -78,7 +90,7 @@ export default {
       <TodoCreateComponent id="todo" class="container"></TodoCreateComponent>
       <section id="next-up" class="container">
         <h1 class="main-title">Next up:</h1>
-        <TodoCard :todo="closest"></TodoCard>
+        <TodoCard :todo="closest" :key="closest.title"></TodoCard>
       </section>
       <TodoDisplayComponent
         id="list"
