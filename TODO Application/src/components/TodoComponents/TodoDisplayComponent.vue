@@ -28,6 +28,14 @@ export default {
         .indexOf(task)
       if (index !== -1) this.tasks.splice(index, 1)
     })
+    this.emitter.on('taskDone', (task) => {
+      const index = this.tasks
+        .map(function (x) {
+          return x.title
+        })
+        .indexOf(task)
+      if (index !== -1) this.tasks.splice(index, 1)
+    })
   },
 }
 </script>

@@ -60,12 +60,14 @@ export default {
     <p class="description">{{ content.description }}</p>
     <div class="wrapper">
       <h2 class="expiration">{{ deadline }}</h2>
-      <button class="marker" @click="markDone()">
-        <span class="material-icons icon"> done </span>
-      </button>
-      <button class="marker" @click="markRemoved()" id="remove">
-        <span class="material-icons icon"> delete_outline </span>
-      </button>
+      <div class="flex-container">
+        <button class="marker" @click="markDone()">
+          <span class="material-icons icon"> done </span>
+        </button>
+        <button class="marker" @click="markRemoved()" id="remove">
+          <span class="material-icons icon"> delete_outline </span>
+        </button>
+      </div>
     </div>
   </div>
   <Error class="container" v-if="!dataFetched"></Error>
@@ -108,7 +110,7 @@ export default {
 .wrapper {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   height: 25%;
   gap: 1rem;
